@@ -1,0 +1,346 @@
+<style>
+    #allrecords .item-projects__footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    #allrecords .item-projects__footer a:hover {
+        color: #8F284C;
+    }
+    
+    .t-records .item-projects__footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    #allrecords .item-projects__footer .item-projects__doc {
+        color: #4B4B4B;
+        text-decoration: underline;
+    }
+    
+    .t-records .item-projects__footer .item-projects__doc {
+        color: #4B4B4B;
+        text-decoration: underline;
+    }
+    
+    
+        .projects {
+        height: 100%;
+        font-family: 'Montserrat';
+    }
+    
+    .projects__container {
+        padding: 70px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .projects__title {
+        text-align: center;
+        line-height: 119.9%;
+        color: #DC7B9D;
+        font-size: 40px;
+        padding-bottom: 35px;
+    }
+    
+    .projects__content {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .projects__item {
+        display: flex;
+        gap: 50px;
+        border-bottom: 1px solid #DC7B9D;
+        padding: 25px;
+    }
+    
+    .item-projects {}
+    
+    .item-projects__img {
+        width: 320px;
+        height: 380px;
+        // background: #ffc1d7;
+        border-radius: 60px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .item-projects__img img {
+        border-radius: 60px;
+        // width: 100%;
+        height: 100%;
+    }
+    
+    .item-projects__info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .item-projects__title {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 116.9%;
+        color: #DC7B9D;
+    }
+    
+    .item-projects__subtitle {
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 68.9%;
+        color: #4B4B4B;
+    }
+    
+    .item-projects__text {
+        max-width: 670px;
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 120.4%;
+        color: #000000;
+    }
+    
+    .item-projects__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .item-projects__doc {
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 119.9%;
+        /* or 19px */
+    
+        text-decoration-line: underline;
+        color: #4B4B4B;
+    }
+    
+    .item-projects__button {
+        font-size: 16px;
+        padding: 14px 25px;
+    }
+    
+    .button {
+        filter: drop-shadow(0px 2px 4px #DC7B9D);
+        background: linear-gradient(270deg, rgba(194, 54, 104, 0.52) 0%, #AD778A 100%);
+        border-radius: 25px;
+        cursor: pointer;
+        color: #fff;
+    
+    }
+    
+    .button:hover {
+        background: #fff;
+        outline: 1px solid #8F284C;
+        color: #8F284C;
+    }
+    
+    @media (max-width: 1130px) {
+        .projects__item {
+            gap: 30px;
+            padding: 20px;
+        }
+    
+        .item-projects__img {
+            width: 270px;
+            height: 280px;
+        }
+    
+        .item-projects__text {
+            max-width: 500px;
+        }
+    }
+    
+    @media (max-width: 959px) {
+        .projects__container {
+            padding: 30px 10px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+    
+        .projects__title {
+            font-size: 32px;
+            padding-bottom: 20px;
+        }
+    
+        .projects__content {
+            gap: 5px;
+        }
+    
+        .projects__item {
+            gap: 20px;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .item-projects {}
+    
+        .item-projects__img {
+            width: 275px;
+            height: 275px;
+            border-radius: 40px;
+        }
+    
+        .item-projects__img img {
+            border-radius: 60px;
+            // width: 100%;
+            // height: 100%;
+        }
+    
+        .item-projects__info {
+            gap: 15px;
+        }
+    
+        .item-projects__title {
+            font-size: 24px;
+        }
+    
+        .item-projects__subtitle {
+            font-size: 20px;
+        }
+    
+        .item-projects__text {
+            max-width: 100%;
+            font-size: 14px;
+        }
+    
+        .item-projects__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        .item-projects__doc {
+            font-weight: 200;
+            font-size: 16px;
+            line-height: 119.9%;
+            text-decoration-line: underline;
+            color: #4B4B4B;
+        }
+    
+        .item-projects__button {
+            font-size: 16px;
+            padding: 14px 25px;
+        }
+    }
+    
+    @media (max-width: 470px) {
+        .projects__container {
+            padding: 30px 5px;
+            max-width: 100%;
+        }
+    
+        .projects__title {
+            font-size: 20px;
+            padding-bottom: 10px;
+        }
+    
+        .projects__content {
+            gap: 5px;
+        }
+    
+        .projects__item {
+            gap: 10px;
+            padding: 10px;
+        }
+    
+        .item-projects__img {
+            width: 185px;
+            height: 185px;
+            border-radius: 20px;
+        }
+    
+        .item-projects__img img {
+            border-radius: 20px;
+            // width: 100%;
+            // height: 100%;
+        }
+    
+        .item-projects__info {
+            gap: 10px;
+            text-align: center;
+        }
+    
+        .item-projects__title {
+            font-size: 16px;
+        }
+    
+        .item-projects__subtitle {
+            font-size: 14px;
+        }
+    
+        .item-projects__text {
+            font-size: 12px;
+        }
+    
+        .item-projects__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        .item-projects__doc {
+            font-size: 12px;
+        }
+    
+        .item-projects__button {
+            font-size: 14px;
+            padding: 10px 21px;
+        }
+    }
+    </style>
+    <section class="projects">
+        <div class="projects__container">
+            <h2 class="projects__title">Проекты</h2>
+            <div class="projects__content" id="content">
+               
+            </div>
+        </div>
+        <script>
+            async function setCookie(cName, cValue, expDays) {
+                
+                document.cookie = cName + "=" + cValue + ";";
+            }
+
+            async function setDataAndRedirect(id) {
+                setCookie('id', id, 20);
+                window.location.replace("/project");
+            }
+
+            async function getData() {
+                let url = 'http://37.46.129.236/api/projects';
+                let response = await fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    }
+                });
+                let projects = await response.json();
+    
+                let content = '';
+                for (var i = 0; i < projects.length; i++) {
+                    content += ` <div class="projects__item item-projects">
+                        <div class="item-projects__img">
+                            <img src="http://37.46.129.236/uploads/${projects[i].img}" alt="">
+                        </div>
+                        <div class="item-projects__info">
+                            <h3 class="item-projects__title">${projects[i].title}</h3>
+                            <div class="item-projects__subtitle">${projects[i].subtitle}</div>
+                            <div class="item-projects__text">${projects[i].description}
+                            </div>
+                            <div class="item-projects__footer">
+                                <a class="item-projects__doc" onclick="setDataAndRedirect(${projects[i].id})">документы о сборе</a>
+                                <a class="item-projects__button button" onclick="setDataAndRedirect(${projects[i].id})">Оказать помощь</a>
+                            </div>
+                        </div>
+                    </div>`;
+                };
+                document.getElementById('content').innerHTML = content;
+            };
+            getData();
+        </script>
+    </section>

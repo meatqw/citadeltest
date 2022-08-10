@@ -1,0 +1,470 @@
+<style>
+    #allrecords .doc-project__item {
+        color: #000;
+        text-decoration: none;
+    }
+    
+    #allrecords .doc-project__item:hover {
+        text-decoration: underline;
+    }
+    
+    .t-records .doc-project__item {
+        color: #000;
+        text-decoration: none;
+    }
+    
+    #allrecords .item-project__footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    #allrecords .item-project__footer a:hover {
+        color: #8F284C;
+    }
+    
+    .t-records .item-project__footer a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    
+    .project {
+        height: 100%;
+        font-family: 'Montserrat';
+    }
+    
+    .project__container {
+        padding: 70px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .project__item {
+        display: flex;
+        gap: 50px;
+        border-bottom: none;
+        padding: 0;
+        padding-bottom: 70px;
+        align-items: center;
+    }
+    
+    .item-project {}
+    
+    .item-project__img {
+        width: 320px;
+        height: 380px;
+        // background: #ffc1d7;
+        border-radius: 60px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .item-project__img img {
+        border-radius: 60px;
+        // width: 100%;
+        height: 100%;
+    }
+    
+    .item-project__info {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .item-project__title {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 116.9%;
+        color: #DC7B9D;
+        padding-bottom: 0;
+    }
+    
+    .item-project__subtitle {
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 68.9%;
+        color: #4B4B4B;
+    }
+    
+    .item-project__text {
+        max-width: 670px;
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 120.4%;
+        color: #000000;
+    }
+    
+    .item-project__footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    
+    .item-project__button {
+        font-size: 16px;
+        padding: 14px 25px;
+    }
+    
+    .button {
+        filter: drop-shadow(0px 2px 4px #DC7B9D);
+        background: linear-gradient(270deg, rgba(194, 54, 104, 0.52) 0%, #AD778A 100%);
+        border-radius: 25px;
+        cursor: pointer;
+        color: #fff;
+    
+    }
+    
+    .button:hover {
+        background: #fff;
+        outline: 1px solid #8F284C;
+        color: #8F284C;
+    }
+    
+    .project__documents {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        row-gap: 30px;
+    }
+    
+    .doc-project {}
+    
+    .doc-project__title {
+        padding: 0px 0px 50px 0px;
+        text-align: center;
+        font-size: 32px;
+        color: #8F284C;
+    }
+    
+    .doc-project__item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 332px;
+    }
+    
+    .doc-project__item:hover {
+        text-decoration: underline;
+    }
+    
+    .doc-project__img img {
+        max-width: 76px;
+    }
+    
+    .doc-project__text {}
+    
+    @media (max-width: 1130px) {
+        .project__item {
+            gap: 30px;
+            padding: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    
+        .item-project__img {
+            width: 270px;
+            height: 280px;
+        }
+    
+        .item-project__text {
+            max-width: 670px;
+        }
+    
+        .doc-project__item {
+            gap: 10px;
+            width: 300px;
+        }
+    
+        .doc-project__img img {
+            max-width: 50px;
+        }
+    }
+    
+    @media (max-width: 959px) {
+        .project__container {
+            padding: 30px 10px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+    
+        .project__item {
+            gap: 20px;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .item-project {}
+    
+        .item-project__img {
+            width: 275px;
+            height: 275px;
+            border-radius: 40px;
+        }
+    
+        .item-project__img img {
+            border-radius: 60px;
+            // width: 100%;
+            // height: 100%;
+        }
+    
+        .item-project__info {
+            gap: 15px;
+        }
+    
+        .item-project__title {
+            font-size: 24px;
+        }
+    
+        .item-project__subtitle {
+            font-size: 20px;
+        }
+    
+        .item-project__text {
+            max-width: 100%;
+            font-size: 14px;
+        }
+    
+        .item-project__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        .item-project__doc {
+            font-weight: 200;
+            font-size: 16px;
+            line-height: 119.9%;
+            text-decoration-line: underline;
+            color: #4B4B4B;
+        }
+    
+        .item-project__button {
+            font-size: 16px;
+            padding: 14px 25px;
+        }
+    
+        .project__documents {
+            row-gap: 20px;
+        }
+    
+        .doc-project__title {
+            padding: 10px 0px 30px 0px;
+            text-align: center;
+            font-size: 23px;
+            color: #8F284C;
+        }
+    
+        .doc-project__item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 270px;
+            font-size: 14px;
+        }
+    
+        .doc-project__img img {
+            max-width: 55px;
+        }
+    }
+    
+    @media (max-width: 570px) {
+        .project__documents {
+            row-gap: 20px;
+        }
+    
+        .doc-project__item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 240px;
+            font-size: 12px;
+        }
+    
+        .doc-project__img img {
+            max-width: 32px;
+        }
+    }
+    
+    @media (max-width: 505px) {
+        .project__documents {
+            justify-content: center;
+        }
+    }
+    
+    @media (max-width: 470px) {
+        .project__container {
+            padding: 30px 5px;
+            max-width: 100%;
+        }
+    
+        .project__item {
+            gap: 10px;
+            padding: 10px;
+        }
+    
+        .item-project__img {
+            width: 185px;
+            height: 185px;
+            border-radius: 20px;
+        }
+    
+        .item-project__img img {
+            border-radius: 20px;
+            // width: 100%;
+            // height: 100%;
+        }
+    
+        .item-project__info {
+            gap: 10px;
+            text-align: center;
+        }
+    
+        .item-project__title {
+            font-size: 16px;
+        }
+    
+        .item-project__subtitle {
+            font-size: 14px;
+        }
+    
+        .item-project__text {
+            font-size: 12px;
+        }
+    
+        .item-project__footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        .item-project__doc {
+            font-size: 12px;
+        }
+    
+        .item-project__button {
+            font-size: 14px;
+            padding: 10px 21px;
+        }
+    
+        .doc-project__title {
+            padding: 10px 0px 20px 0px;
+            font-size: 16px;
+        }
+    }
+    </style>
+        <section class="project">
+        <div class="project__container">
+            <div class="project__item item-project">
+                <div class="item-project__img">
+                    <img src="https://static.tildacdn.com/tild6133-6666-4463-b464-313536356232/ilia.jpg" alt="">
+                </div>
+                <div class="item-project__info">
+                    <h2 class="item-project__title">Сбор для Илюши Скрябина</h2>
+                    <div class="item-project__subtitle">Диагноз: ДЦП</div>
+                    <div class="item-project__text">Илюшу ждёт долгое восстановление и реабилитация после операции,
+                        которая прошла 17.02.22. Этот очень сильный духом мальчик, будет заново многому учиться,
+                        особенно ходить. Мы желаем его маме и ему огромного терпения и много сил!
+                        <br>
+                        ДАВАЙТЕ ВСЕ ВМЕСТЕ ПОМОЖЕМ ЕМУ!
+                        <br>
+                        Если каждый из нас переведёт по 300, 200, 100 и даже 10 рублей, мы сможем помочь Илюше пройти
+                        реабилитацию, и дать ребёнку шанс на будущее!
+                    </div>
+                    <div class="item-project__footer">
+                        <a href="" class="item-project__button button">Оказать помощь</a>
+                    </div>
+                </div>
+            </div>
+            <h3 class="doc-project__title">Документы проекта о сборе</h3>
+            <div class="project__documents doc-project">
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Выписка из амбулаторной карты Скрябина Ильи</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Медицинские выписки</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Обращение Скрябиной О.В.</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Реквизиты для сбора: Скрябин Илья</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Справка об инвалидности</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Справка об операции</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Обращение БФ Цитадель</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Счёт №4291 от 15.12.21г.</div>
+                </a>
+                <a href="#" class="doc-project__item">
+                    <div class="doc-project__img">
+                        <img src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg" alt="pdf">
+                    </div>
+                    <div class="doc-project__text">Счет МЦ Сакура для БФ Цитадель</div>
+                </a>
+            </div>
+        </div>
+            <script>
+                async function getData() {
+                    let url = 'http://37.46.129.236/api/projects';
+                    let response = await fetch(url, {
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        }
+                    });
+                    let projects = await response.json();
+        
+                    let content = '';
+                    for (var i = 0; i < projects.length; i++) {
+                        content += ` <div class="project__item item-project">
+                            <div class="item-project__img">
+                                <img src="http://37.46.129.236/uploads/${projects[i].img}" alt="">
+                            </div>
+                            <div class="item-project__info">
+                                <h3 class="item-project__title">${projects[i].title}</h3>
+                                <div class="item-project__subtitle">${projects[i].subtitle}</div>
+                                <div class="item-project__text">${projects[i].description}
+                                </div>
+                                <div class="item-projects__footer">
+                                    <a href="project" class="item-project__doc">документы о сборе</a>
+                                    <a href="project" class="item-project__button button">Оказать помощь</a>
+                                </div>
+                            </div>
+                        </div>`;
+                    };
+                    document.getElementById('content').innerHTML = content;
+                };
+                getData();
+            </script>
+        </section>

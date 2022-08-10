@@ -1,0 +1,237 @@
+<style>
+    .news {
+        height: 100%;
+        font-family: 'Montserrat';
+    }
+
+    .news__container {
+        padding: 70px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .news__title {
+        text-align: center;
+        line-height: 119.9%;
+        color: #DC7B9D;
+        font-size: 40px;
+        padding-bottom: 55px;
+    }
+
+    .news__content {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+    }
+
+    .news__item {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #eeb4c8;
+    }
+
+    .item-news {}
+
+    .item-news__img {
+        width: 215px;
+        height: 215px;
+        // background: #ffc1d7;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .item-news__img img {
+        border-radius: 30px;
+        // width: 100%;
+        height: 100%;
+    }
+
+    .item-news__info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 570px;
+    }
+
+    .item-news__title {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 119.9%;
+        color: #DC7B9D;
+    }
+
+    .item-news__text {
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 119.9%;
+        color: #000000;
+        max-width: 540px;
+    }
+
+    .item-news__date {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 119.9%;
+        color: #4B4B4B;
+    }
+
+    @media (max-width: 959px) {
+        .news__container {
+            padding: 30px 10px;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .news__title {
+            text-align: center;
+            font-size: 32px;
+            padding-bottom: 25px;
+        }
+
+        .news__content {
+            gap: 20px;
+
+        }
+
+        .news__item {
+            gap: 25px;
+            padding-bottom: 20px;
+        }
+
+        .item-news {}
+
+        .item-news__img {
+            width: 195px;
+            height: 195px;
+            border-radius: 40px;
+        }
+
+        .item-news__img img {
+            border-radius: 30px;
+            // width: 100%;
+            // height: 100%;
+        }
+
+        .item-news__info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+        }
+
+        .item-news__title {
+            font-size: 24px;
+        }
+
+        .item-news__text {
+            font-size: 14px;
+            max-width: 350px;
+        }
+
+        .item-news__date {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 639px) {
+        .news__container {
+            padding: 30px 5px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .news__title {
+            font-size: 29px;
+            padding-bottom: 15px;
+        }
+
+        .news__content {
+            gap: 15px;
+            align-items: center;
+
+        }
+
+        .news__item {
+            gap: 10px;
+            padding-bottom: 10px;
+            flex-direction: column;
+            text-align: center;
+            max-width: 470px;
+        }
+
+        .item-news {}
+
+        .item-news__img {
+            width: 175px;
+            height: 175px;
+            border-radius: 20px;
+        }
+
+        .item-news__img img {
+            border-radius: 20px;
+            // width: 100%;
+            // height: 100%;
+        }
+
+        .item-news__info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .item-news__title {
+            font-size: 16px;
+        }
+
+        .item-news__text {
+            font-size: 12px;
+            max-width: 380px;
+        }
+
+        .item-news__date {
+            font-size: 14px;
+        }
+    }
+    }
+</style>
+<section class="news">
+    <div class="news__container">
+        <h2 class="news__title">Новости</h2>
+        <div class="news__content" id="content">
+
+        </div>
+    </div>
+    <script>
+        async function getData() {
+            let url = 'http://37.46.129.236/api/news';
+            let response = await fetch(url, {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                }
+            });
+            let news = await response.json();
+
+            let content = '';
+            for (var i = 0; i < news.length; i++) {
+                content += `<div class="news__item item-news">
+                <div class="item-news__img">
+                    <img src="http://37.46.129.236/uploads/${news[i].img}">
+                </div>
+                <div class="item-news__info">
+                    <h3 class="item-news__title">${news[i].title}</h3>
+                    <div class="item-news__text">${news[i].description}
+                    </div>
+                    <div class="item-news__date">${news[i].date}</div>
+                </div>
+            </div>`;
+            };
+            document.getElementById('content').innerHTML = content;
+        };
+        getData();
+    </script>
+</section>
