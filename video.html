@@ -1,0 +1,121 @@
+<style>
+    .videos {
+    height: 100%;
+    font-family: 'Montserrat';
+}
+
+.videos__container {
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.videos__title {
+    text-align: center;
+    line-height: 119.9%;
+    color: #DC7B9D;
+    font-size: 40px;
+    padding-bottom: 50px;
+}
+
+.videos__content {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.videos__item {
+    width: 480px;
+    height: 285px;
+}
+
+.videos__item iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px 3px #EEB4C8;
+}
+
+@media (max-width: 1070px) {
+    .videos__item {
+        width: 400px;
+        height: 235px;
+    }
+}
+
+@media (max-width: 959px) {
+    .videos__container {
+        padding: 30px 10px;
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .videos__title {
+        font-size: 32px;
+        padding-bottom: 30px;
+    }
+
+    .videos__content {
+        gap: 30px;
+    }
+
+    .videos__item {
+        width: 270px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 590px) {
+    .videos__item {
+        width: 310px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 470px) {
+    .videos__container {
+        padding: 30px 5px;
+        max-width: 100%;
+    }
+
+    .videos__content {
+        gap: 20px;
+    }
+
+    .videos__title {
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+}
+</style>
+<section class="videos">
+    <div class="videos__container">
+        <h2 class="videos__title">Видеоблог</h2>
+        <div class="videos__content" id="content">
+           
+           
+        </div>
+    </div>
+</section>
+<script>
+    async function getData() {
+        let url = 'http://37.46.129.236/api/video';
+        let response = await fetch(url, {
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            }
+        });
+        let videos = await response.json();
+
+        let content = '';
+        for (var i = 0; i < videos.length; i++) {
+            content += `<div class="videos__item">
+                <iframe src="${videos[i].link}"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>`;
+        };
+        document.getElementById('content').innerHTML = content;
+    };
+    getData();
+</script>

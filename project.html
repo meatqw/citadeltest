@@ -1,429 +1,113 @@
 <style>
-  #allrecords .doc-help__text {
-    color: #000000;
-    text-decoration: none;
-  }
-  .t-records .doc-help__text {
-    color: #000000;
-    text-decoration: none;
-  }
-
-  .title {
-    font-weight: 900;
-  }
-
-  .link:hover {
-    text-decoration: underline;
-  }
-
-  input {
-    outline: none;
-  }
-
-  .popup {
-    font-family: "Montserrat";
-  }
-
-  .popup-help {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    padding: 35px 0;
-    border-radius: 40px;
-    box-shadow: 0px 0px 3px 1px #eeb4c8;
-  }
-
-  .popup-help__title {
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 119.9%;
-    text-align: center;
-    color: #dc7b9d;
-    padding-bottom: 15px;
-  }
-
-  .popup-help__subtitle {
-    font-weight: 200;
-    font-size: 16px;
-    line-height: 119.9%;
-    text-align: center;
-    color: #000000;
-  }
-
-  .popup-help__content {
-    display: flex;
-    gap: 50px;
-    padding: 40px 30px;
-  }
-
-  .popup-help__form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .popup-help__form input {
-    border: none;
-    border-bottom: 2px solid #dc7b9d;
-    width: 100%;
-    max-width: 249px;
-    height: 27px;
-    font-family: "Montserrat";
-    font-size: 16px;
-    font-weight: 200;
-  }
-
-  .popup-help__form input::placeholder {
-    font-size: 16px;
-  }
-
-  .popup-help__documents {
-    max-width: 370px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .doc-help {
-  }
-
-  .doc-help__title {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 119.9%;
-    color: #000000;
-  }
-
-  .doc-help__content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .doc-help__item {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 119.9%;
-    text-decoration-line: underline;
-    color: #4b4b4b;
-  }
-
-  .doc-help__img img {
-    max-width: 30px;
-  }
-
-  .doc-help__text {
-  }
-
-  .popup-help__footer {
-  }
-
-  .popup-help__button {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 119.9%;
-    color: #ffffff;
-    padding: 13px 50px;
-    filter: drop-shadow(0px 2px 4px #dc7b9d);
-    background: linear-gradient(
-      270deg,
-      rgba(194, 54, 104, 0.52) 0%,
-      #ad778a 100%
-    );
-    border-radius: 25px;
-  }
-
-  .button {
-    border: none;
-    cursor: pointer;
-  }
-
-  .button:hover {
-    background: #fff;
-    outline: 1px solid #8f284c;
-    color: #8f284c;
-  }
-
-  /* download button */
-  .input__wrapper {
-    width: 100%;
-    position: relative;
-    text-align: center;
-  }
-
-  .input__file {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-  }
-
-  .input__file-icon-wrapper {
-    height: 40px;
-    width: 40px;
-    margin-right: 1px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
-  .input__file-button-text {
-    line-height: 1;
-    margin-top: 1px;
-  }
-
-  .input__file-button {
-    width: 100%;
-    max-width: 249px;
-    height: 45px;
-    background: #fff;
-    color: #000000;
-    font-size: 14px;
-    font-weight: 200;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    border-radius: 15px;
-    cursor: pointer;
-    border: 2px solid #dc7b9d;
-  }
-
-  /* popup */
-  body.lock {
-    overflow: hidden;
-  }
-
-  .popup {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    top: 0;
-    left: 0;
-    opacity: 0;
-    visibility: hidden;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: all 0.5s ease 0s;
-    z-index: 10000;
-  }
-
-  .popup.open {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .popup__body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px 10px;
-  }
-
-  .popup__content {
-    position: relative;
-    color: #000;
-    max-width: 800px;
-  }
-
-  .popup__close {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
-
-  @media (max-width: 959px) {
-    .popup-help {
-      padding: 25px 0;
+    #allrecords .doc-project__item {
+      color: #000;
+      text-decoration: none;
     }
-
-    .popup-help__title {
-      font-size: 32px;
-      padding-bottom: 10px;
+  
+    #allrecords .doc-project__item:hover {
+      text-decoration: underline;
     }
-
-    .popup-help__content {
-      gap: 35px;
-      padding: 25px 30px;
+  
+    .t-records .doc-project__item {
+      color: #000;
+      text-decoration: none;
     }
-
-    .popup-help__form {
-      gap: 20px;
+  
+    #allrecords .item-project__footer a {
+      color: #fff;
+      text-decoration: none;
     }
-
-    .popup-help__form input {
-      font-size: 14px;
+  
+    #allrecords .item-project__footer a:hover {
+      color: #8f284c;
     }
-
-    .popup-help__form input::placeholder {
-      font-size: 14px;
+  
+    .t-records .item-project__footer a {
+      color: #fff;
+      text-decoration: none;
     }
-
-    .popup-help__documents {
-      max-width: 290px;
-      gap: 10px;
-    }
-
-    .doc-help__title {
-      font-size: 14px;
-    }
-
-    .doc-help__item {
-      font-size: 12px;
-    }
-
-    .doc-help__img img {
-      max-width: 25px;
-    }
-
-    .input__file-icon-wrapper {
-      height: 40px;
-      width: 40px;
-      margin-right: 1px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-    }
-
-    .input__file-button-text {
-      line-height: 1;
-      margin-top: 1px;
-    }
-
-    .input__file-button {
-      width: 100%;
-      max-width: 249px;
-      height: 45px;
-      background: #fff;
-      color: #000000;
-      font-size: 14px;
-      font-weight: 200;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      border-radius: 15px;
-      cursor: pointer;
-      border: 2px solid #dc7b9d;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .popup-help {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
+  
+    .project {
       height: 100%;
-      background: #fff;
-      border-radius: 20px;
-      padding: 25px 0;
+      font-family: "Montserrat";
     }
-
-    .popup-help__title {
-      font-size: 20px;
-      padding-bottom: 15px;
+  
+    .project__container {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-
-    .popup-help__subtitle {
-      font-size: 14px;
-    }
-
-    .popup-help__content {
+  
+    .project__item {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
-      padding: 15px 20px;
-    }
-
-    .popup-help__form {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .popup-help__form input {
-      max-width: 100%;
-      font-size: 14px;
-    }
-
-    .popup-help__form input::placeholder {
-      font-size: 14px;
-    }
-
-    .popup-help__documents {
-      max-width: 100%;
-      gap: 10px;
-    }
-
-    .doc-help__title {
-      font-size: 14px;
-    }
-
-    .doc-help__content {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .doc-help__item {
-      display: flex;
-      gap: 10px;
+      gap: 50px;
+      border-bottom: none;
+      padding: 0;
+      padding-bottom: 70px;
       align-items: center;
-      font-weight: 200;
-      font-size: 12px;
-      line-height: 119.9%;
-      text-decoration-line: underline;
+    }
+  
+    .item-project {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .item-project__img {
+      width: 320px;
+      height: 380px;
+      // background: #ffc1d7;
+      border-radius: 60px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    .item-project__img img {
+      border-radius: 60px;
+      // width: 100%;
+      height: 100%;
+    }
+  
+    .item-project__info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .item-project__title {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 116.9%;
+      color: #dc7b9d;
+      padding-bottom: 0;
+    }
+  
+    .item-project__subtitle {
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 68.9%;
       color: #4b4b4b;
     }
-
-    .doc-help__img img {
-      max-width: 30px;
-    }
-
-    .doc-help__text {
-    }
-
-    .popup-help__footer {
-    }
-
-    .popup-help__button {
-      font-weight: 600;
+  
+    .item-project__text {
+      max-width: 670px;
+      font-weight: 200;
       font-size: 16px;
-      line-height: 119.9%;
-      color: #ffffff;
-      padding: 13px 50px;
+      line-height: 120.4%;
+      color: #000000;
+    }
+  
+    .item-project__footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  
+    .item-project__button {
+      font-size: 16px;
+      padding: 14px 25px;
+    }
+  
+    .button {
       filter: drop-shadow(0px 2px 4px #dc7b9d);
       background: linear-gradient(
         270deg,
@@ -431,385 +115,313 @@
         #ad778a 100%
       );
       border-radius: 25px;
+      cursor: pointer;
+      color: #fff;
     }
-
-    .button {
-    }
-
+  
     .button:hover {
       background: #fff;
       outline: 1px solid #8f284c;
       color: #8f284c;
     }
-
-    /* download button */
-    .input__wrapper {
-      width: 100%;
-      position: relative;
+  
+    .project__documents {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      row-gap: 30px;
+    }
+  
+    .doc-project {
+    }
+  
+    .doc-project__title {
+      padding: 0px 0px 50px 0px;
       text-align: center;
+      font-size: 32px;
+      color: #8f284c;
     }
-
-    .input__file {
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-    }
-
-    .input__file-icon-wrapper {
-      height: 40px;
-      width: 40px;
-      margin-right: 1px;
-      display: -webkit-box;
-      display: -ms-flexbox;
+  
+    .doc-project__item {
       display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center;
+      gap: 20px;
+      width: 332px;
     }
-
-    .input__file-button-text {
-      line-height: 1;
-      margin-top: 1px;
+  
+    .doc-project__item:hover {
+      text-decoration: underline;
     }
-
-    .input__file-button {
-      width: 100%;
-      max-width: 249px;
-      height: 45px;
-      background: #fff;
-      color: #000000;
-      font-size: 14px;
-      font-weight: 200;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      border-radius: 15px;
-      cursor: pointer;
-      border: 2px solid #dc7b9d;
+  
+    .doc-project__img img {
+      max-width: 76px;
     }
-  }
-</style>
-
-<div class="button-header__block">
-  <a class="popup-link button-header" href="#popup_help"
-    >Получить&nbsp;помощь</a
-  >
-  <a class="button-header" href="help">Оказать&nbsp;помощь</a>
-</div>
-
-<div id="popup_help" class="popup">
-  <div class="popup__body">
-    <div class="popup__content">
-      <!-- <a href="#" class="popup__close close-popup">&times;</a> -->
-      <div class="popup-help">
-        <h3 class="popup-help__title">Получить помощь</h3>
-        <div class="popup-help__subtitle">
-          Заполните все необходимые данные:
-        </div>
-        <div class="popup-help__content">
-          <form action="" class="popup-help__form">
-            <input
-              type="text"
-              class="input"
-              id="fullname"
-              name="fullname"
-              placeholder="Введите ФИО"
-              required
-            />
-            <input
-              type="email"
-              class="input"
-              id="email"
-              name="email"
-              placeholder="Введите почту"
-              required
-            />
-            <input
-              type="tel"
-              class="input"
-              id="phone"
-              name="phone"
-              placeholder="Введите телефон"
-              required
-            />
-            <div class="input__wrapper">
-              <input
-                name="file"
-                type="file"
-                name="file"
-                id="input__file"
-                class="input input__file"
-                multiple
-              />
-              <label for="input__file" class="input__file-button">
-                <span class="input__file-icon-wrapper"
-                  ><img
-                    class="input__file-icon"
-                    src="https://static.tildacdn.com/tild3762-3364-4761-b434-306166616363/arrow_download.svg"
-                    alt="Выбрать файл"
-                    width="25"
-                /></span>
-                <span class="input__file-button-text">Выберите файлы</span>
-              </label>
-            </div>
-          </form>
-          <div class="popup-help__documents doc-help">
-            <div class="doc-help__title">Перечень необходимых документов:</div>
-            <div class="doc-help__content">
-              <a href="#" class="doc-help__item">
-                <div class="doc-help__img">
-                  <img
-                    src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg"
-                    alt="pdf"
-                  />
-                </div>
-                <div class="doc-help__text">Паспорт заявителя</div>
-              </a>
-              <a href="#" class="doc-help__item">
-                <div class="doc-help__img">
-                  <img
-                    src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg"
-                    alt="pdf"
-                  />
-                </div>
-                <div class="doc-help__text">
-                  Медицинские и иные документы подтверждающие необходимость
-                  помощи
-                </div>
-              </a>
-              <a href="#" class="doc-help__item">
-                <div class="doc-help__img">
-                  <img
-                    src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg"
-                    alt="pdf"
-                  />
-                </div>
-                <div class="doc-help__text">
-                  Справка об инвалидности (при наличии)
-                </div>
-              </a>
-              <a href="#" class="doc-help__item">
-                <div class="doc-help__img">
-                  <img
-                    src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg"
-                    alt="pdf"
-                  />
-                </div>
-                <div class="doc-help__text">
-                  Справка из соцзащиты (при наличии)
-                </div>
-              </a>
-              <a href="#" class="doc-help__item">
-                <div class="doc-help__img">
-                  <img
-                    src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg"
-                    alt="pdf"
-                  />
-                </div>
-                <div class="doc-help__text">
-                  Обращение заявителя на имя Президента фонда с просьбой о
-                  помощи
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="popup-help__footer">
-          <button class="popup-help__button button">Отправить</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-  const btn = document.querySelector("button");
-  btn.addEventListener("click", function () {
-
-    var file = [];
-    let files = document.getElementById("input__file").files;
-    console.log(files)
-    var url = "http://localhost:3001/api/upload";
-    for (var i = 0; i < files.length; i++) {
-      let xhr = new XMLHttpRequest();
-      xhr.open("POST", url);
-      var form_data = new FormData();
-      form_data.append("img", files[i]);
-      xhr.send(form_data);
-      file.push(files[i].name + '-' + Date.now());
+  
+    .doc-project__text {
     }
-
-    let fullname = document.getElementById("fullname").value;
-    let email = document.getElementById("email").value;
-    let phone = document.getElementById("phone").value;
-    
-    var urlApi = "http://localhost:3001/api/help"
-    let data = {
-      fullname: fullname,
-      email: email,
-      phone: phone,
-      documents: { docs: file }
-    };
-
-    const response = fetch(urlApi, {
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-  });
-</script>
-
-<script>
-  const popupLinks = document.querySelectorAll(".popup-link");
-  const body = document.querySelector("body");
-  const lockPadding = document.querySelectorAll(".lock-padding");
-
-  let unlock = true;
-
-  const timeout = 500;
-
-  if (popupLinks.length > 0) {
-    for (let index = 0; index < popupLinks.length; index++) {
-      const popupLink = popupLinks[index];
-      popupLink.addEventListener("click", function (e) {
-        const popupName = popupLink.getAttribute("href").replace("#", "");
-        const curentPopup = document.getElementById(popupName);
-        popupOpen(curentPopup);
-        e.prevetnDefault();
-      });
-    }
-  }
-
-  const popupCloseIcon = document.querySelectorAll(".close-popup");
-  if (popupCloseIcon.length > 0) {
-    for (let index = 0; index < popupCloseIcon.length; index++) {
-      const el = popupCloseIcon[index];
-      el.addEventListener("click", function (e) {
-        popupClose(el.closest(".popup"));
-        e.preventDefault();
-      });
-    }
-  }
-
-  function popupOpen(curentPopup) {
-    if (curentPopup && unlock) {
-      const popupActive = document.querySelector(".popup.open");
-      if (popupActive) {
-        popupClose(popupActive, false);
-      } else {
-        bodyLock();
+  
+    @media (max-width: 1130px) {
+      .project__item {
+        gap: 30px;
+        padding: 20px;
+        justify-content: center;
+        align-items: flex-start;
       }
-      curentPopup.classList.add("open");
-      curentPopup.addEventListener("click", function (e) {
-        if (!e.target.closest(".popup__content")) {
-          popupClose(e.target.closest(".popup"));
+  
+      .item-project__img {
+        width: 270px;
+        height: 280px;
+      }
+  
+      .item-project__text {
+        max-width: 670px;
+      }
+  
+      .doc-project__item {
+        gap: 10px;
+        width: 300px;
+      }
+  
+      .doc-project__img img {
+        max-width: 50px;
+      }
+    }
+  
+    @media (max-width: 959px) {
+      .project__container {
+        padding: 30px 10px;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+  
+      .project__item {
+        gap: 20px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+  
+      .item-project {
+      }
+  
+      .item-project__img {
+        width: 275px;
+        height: 275px;
+        border-radius: 40px;
+      }
+  
+      .item-project__img img {
+        border-radius: 60px;
+        // width: 100%;
+        // height: 100%;
+      }
+  
+      .item-project__info {
+        gap: 15px;
+      }
+  
+      .item-project__title {
+        font-size: 24px;
+      }
+  
+      .item-project__subtitle {
+        font-size: 20px;
+      }
+  
+      .item-project__text {
+        max-width: 100%;
+        font-size: 14px;
+      }
+  
+      .item-project__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+  
+      .item-project__doc {
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 119.9%;
+        text-decoration-line: underline;
+        color: #4b4b4b;
+      }
+  
+      .item-project__button {
+        font-size: 16px;
+        padding: 14px 25px;
+      }
+  
+      .project__documents {
+        row-gap: 20px;
+      }
+  
+      .doc-project__title {
+        padding: 10px 0px 30px 0px;
+        text-align: center;
+        font-size: 23px;
+        color: #8f284c;
+      }
+  
+      .doc-project__item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 270px;
+        font-size: 14px;
+      }
+  
+      .doc-project__img img {
+        max-width: 55px;
+      }
+    }
+  
+    @media (max-width: 570px) {
+      .project__documents {
+        row-gap: 20px;
+      }
+  
+      .doc-project__item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 240px;
+        font-size: 12px;
+      }
+  
+      .doc-project__img img {
+        max-width: 32px;
+      }
+    }
+  
+    @media (max-width: 505px) {
+      .project__documents {
+        justify-content: center;
+      }
+    }
+  
+    @media (max-width: 470px) {
+      .project__container {
+        padding: 30px 5px;
+        max-width: 100%;
+      }
+  
+      .project__item {
+        gap: 10px;
+        padding: 10px;
+      }
+  
+      .item-project__img {
+        width: 185px;
+        height: 185px;
+        border-radius: 20px;
+      }
+  
+      .item-project__img img {
+        border-radius: 20px;
+        // width: 100%;
+        // height: 100%;
+      }
+  
+      .item-project__info {
+        gap: 10px;
+        text-align: center;
+      }
+  
+      .item-project__title {
+        font-size: 16px;
+      }
+  
+      .item-project__subtitle {
+        font-size: 14px;
+      }
+  
+      .item-project__text {
+        font-size: 12px;
+      }
+  
+      .item-project__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+  
+      .item-project__doc {
+        font-size: 12px;
+      }
+  
+      .item-project__button {
+        font-size: 14px;
+        padding: 10px 21px;
+      }
+  
+      .doc-project__title {
+        padding: 10px 0px 20px 0px;
+        font-size: 16px;
+      }
+    }
+  </style>
+  <section class="project">
+    <div class="project__container" id="content"></div>
+    <script>
+      function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(";").forEach(function (el) {
+          let [k, v] = el.split("=");
+          cookie[k.trim()] = v;
+        });
+        return cookie[name];
+      }
+  
+      async function getData() {
+        var id_ = getCookie('id')
+        let url = `http://37.46.129.236/api/projects/${id_}`;
+        let response = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+          },
+        });
+        let project = await response.json();
+  
+        let content = `<div class="project__item item-project">
+                          <div class="item-project__img">
+                              <img src="http://37.46.129.236/uploads/${project.img}" alt="">
+                          </div>
+                          <div class="item-project__info">
+                              <h2 class="item-project__title">${project.title}</h2>
+                              <div class="item-project__subtitle">${project.subtitle}</div>
+                              <div class="item-project__text">${project.description}
+                              </div>
+                              <div class="item-project__footer">
+                                  <a href="" class="item-project__button button">Оказать помощь</a>
+                              </div>
+                          </div>
+                      </div>`;
+  
+        content += `<h3 class="doc-project__title">Документы проекта о сборе</h3>
+        <div class="project__documents doc-project">`;
+  
+        for (var i = 0; i < project.documents.doc.length; i++) {
+          content += `<a href="${project.documents.doc[i].link}" class="doc-project__item">
+                <div class="doc-project__img">
+                  <img
+                    src="https://static.tildacdn.com/tild3932-3230-4238-b265-643939663635/icon_svg_1.svg"
+                    alt="pdf"
+                  />
+                </div>
+                <div class="doc-project__text">
+                  ${project.documents.doc[i].name}
+                </div>
+              </a>`;
         }
-      });
-    }
-  }
-  function popupClose(popupActive, doUnlock = true) {
-    if (unlock) {
-      popupActive.classList.remove("open");
-      if (doUnlock) {
-        bodyUnLock();
+        content += "</div>";
+        document.getElementById("content").innerHTML = content;
       }
-    }
-  }
-
-  function bodyLock() {
-    const lockPaddingValue =
-      window.innerWidth - document.querySelector("body").offsetWidth + "px";
-
-    if (lockPadding.length > 0) {
-      for (let index = 0; index < lockPadding.length; index++) {
-        const el = lockPadding[index];
-        el.getElementsByClassName.paddingRight = lockPaddingValue;
-      }
-    }
-    body.style.paddingRight = lockPaddingValue;
-    body.classList.add("lock");
-
-    unlock = false;
-    setTimeout(function () {
-      unlock = true;
-    }, timeout);
-  }
-
-  function bodyUnLock() {
-    setTimeout(function () {
-      if (lockPadding.length > 0) {
-        for (let index = 0; index < lockPadding.length; index++) {
-          const el = lockPadding[index];
-          el.style.paddingRight = "0px";
-        }
-      }
-      body.style.paddingRight = "0px";
-      body.classList.remove("lock");
-    }, timeout);
-
-    unlock = false;
-    setTimeout(function () {
-      unlock = true;
-    }, timeout);
-  }
-
-  document.addEventListener("keydown", function (e) {
-    if (e.which === 27) {
-      const popupActive = document.querySelector(".popup.open");
-      popupClose(popupActive);
-    }
-  });
-
-  (function () {
-    // проверяем поддержку
-    if (!Element.prototype.closest) {
-      // реализуем
-      Element.prototype.closest = function (css) {
-        var node = this;
-        while (node) {
-          if (node.matches(css)) return node;
-          else node = node.parentElement;
-        }
-        return null;
-      };
-    }
-  })();
-  (function () {
-    // проверяем поддержку
-    if (!Element.prototype.matches) {
-      // определяем свойство
-      Element.prototype.matches =
-        Element.prototype.matchesSelector ||
-        Element.prototype.webkitMatchesSelector ||
-        Element.prototype.mozMatchesSelector ||
-        Element.prototype.msMatchesSelector;
-    }
-  })();
-</script>
-<script>
-  let inputs = document.querySelectorAll(".input__file");
-  Array.prototype.forEach.call(inputs, function (input) {
-    let label = input.nextElementSibling,
-      labelVal = label.querySelector(".input__file-button-text").innerText;
-
-    input.addEventListener("change", function (e) {
-      let countFiles = "";
-      if (this.files && this.files.length >= 1) countFiles = this.files.length;
-
-      if (countFiles)
-        label.querySelector(".input__file-button-text").innerText =
-          "Выбрано файлов: " + countFiles;
-      else label.querySelector(".input__file-button-text").innerText = labelVal;
-    });
-  });
-</script>
+  
+      getData();
+    </script>
+  </section>
+  
+  
+  

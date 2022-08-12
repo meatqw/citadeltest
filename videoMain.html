@@ -1,0 +1,201 @@
+<style>
+  .slider__videos {
+    font-family: "Montserrat";
+  }
+
+  .slider__container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 70px 20px;
+  }
+
+  .slider__title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 119.9%;
+    color: #dc7b9d;
+    padding-bottom: 60px;
+    text-align: center;
+  }
+
+  .slider__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .slider {
+    box-shadow: 0px 0px 3px 1px #eeb4c8;
+    border-radius: 40px;
+    overflow: hidden;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .slider iframe {
+    height: 515px;
+  }
+
+  .slider__line {
+    display: flex;
+    transition: all ease 1s;
+  }
+
+  .slider__button {
+    font-size: 50px;
+    line-height: 1;
+    width: 50px;
+    color: #dc7b9d;
+    transition: all ease 0.5s;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  .slider__button:hover {
+    color: #8f284c;
+  }
+
+  @media (max-width: 959px) {
+    .slider__container {
+      max-width: 620px;
+      padding: 50px 10px;
+    }
+
+    .slider iframe {
+      height: 300px;
+    }
+
+    .slider__title {
+      font-size: 40px;
+      padding-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .slider__title {
+      font-size: 24px;
+      padding-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 590px) {
+    .slider iframe {
+      height: 250px;
+    }
+  }
+
+  @media (max-width: 470px) {
+    .slider__container {
+      max-width: 320px;
+      padding: 30px 0px 120px 0px;
+    }
+
+    .slider__title {
+      font-size: 24px;
+      padding-bottom: 20px;
+    }
+
+    .slider {
+      max-width: 100%;
+      border-radius: 20px;
+    }
+
+    .slider iframe {
+      height: 220px;
+    }
+
+    .slider__button {
+      position: absolute;
+      bottom: -60px;
+    }
+
+    .slider-prev {
+      left: 25%;
+    }
+
+    .slider-next {
+      right: 25%;
+    }
+
+    .slider__line {
+      position: relative;
+    }
+  }
+</style>
+
+
+
+<section class="slider__videos">
+  <div class="slider__container">
+    <h2 class="slider__title">Видеоблог</h2>
+    <div class="slider__content">
+      <button class="slider__button slider-prev">&#10094;</button>
+      <div class="slider">
+        <div class="slider__line" id="contentVideoMain"></div>
+      </div>
+      <button class="slider__button slider-next">&#10095;</button>
+    </div>
+  </div>
+</section>
+<script>
+    function getDataVideoMain() {
+      let url = "http://37.46.129.236/api/video";
+  
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", url, false);
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+      xhr.send();
+  
+      let videos = JSON.parse(xhr.responseText);
+      
+      let content = "";
+      for (var i = 0; i < videos.length; i++) {
+        content += `<iframe src="${videos[i].link}" frameborder="0" allowfullscreen></iframe>`;
+      };
+      document.getElementById("contentVideoMain").innerHTML = content;
+    }
+    getDataVideoMain();
+  </script>
+<script>
+  const iframe = document.querySelectorAll(".slider .slider__line iframe");
+  const sliderLine = document.querySelector(".slider__line");
+  let count = 0;
+  console.log(count);
+  let width;
+
+  function init() {
+    console.log("resize");
+    width = document.querySelector(".slider").offsetWidth;
+    sliderLine.style.width = width * iframe.length + "px";
+    iframe.forEach((item) => {
+      item.style.width = width + "px";
+      item.style.heigth = "auto";
+    });
+    rollSlider();
+  }
+
+  window.addEventListener("resize", init);
+  init();
+
+  document.querySelector(".slider-prev").addEventListener("click", function () {
+    count--;
+    if (count < 0) {
+      count = iframe.length - 1;
+    }
+    rollSlider();
+  });
+
+  document.querySelector(".slider-next").addEventListener("click", function () {
+    count++;
+    if (count >= iframe.length) {
+      count = 0;
+    }
+    rollSlider();
+  });
+
+  function rollSlider() {
+    sliderLine.style.transform = "translate(-" + count * width + "px)";
+  }
+</script>
